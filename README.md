@@ -17,7 +17,7 @@ Called with no argument, the script will display following data (if appropriate 
 
 `python` (`python3`), `python-psutil` (`python3-psutil`)
 
-### Command
+### Command:
 ```
 psuinfo [-C{components}] [-F] [-N] [-T] [-ALL] [-h] [--help]
 ```
@@ -53,8 +53,6 @@ psuinfo [-C{components}] [-F] [-N] [-T] [-ALL] [-h] [--help]
 -ALL - display all possible data (for use in terminal)
 ```
 
-If no `-C` argument given, `-CgStfMu` will be used by default.
-
 Sample usage:
 
 ```
@@ -81,14 +79,14 @@ ________ 1.8/3.3GHz 118.4℉ 2500/m 3.5/15.6GB
 
 ### Execution time:
 
-Since executing of the `psutil.cpu_percent()` function takes a certain time, it makes sense to learn how long it takes your customized command to produce output. To do so, use the `-T` argument:
+Since executing of the `psutil.cpu_percent()` function takes a certain time (set to 1 seond here), it makes sense to learn how long it takes your customized command to produce output. To do so, use the `-T` argument:
 
 ```
 [piotr@asuspro ~]$ python ~/tint2-executors/cpu-fan-mem.py -CgStfM -T
 ________ 1.6/3.3GHz 49.0℃ 2500/m 3.5/15.6GB [1.067s]
 ```
 
-Execution of the command above takes 1.067 second. If so, it makes sense to set at least 2 seconds long interval:
+Execution of the command above takes 1.067 second. To use it in a Tint2 executor, it makes sense to set at least 2 seconds long interval:
 ```
 execp_interval = 2
 ```
