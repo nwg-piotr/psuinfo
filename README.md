@@ -11,7 +11,11 @@ Called with no argument, the script will display following data (if appropriate 
 - fan speed
 - memory available/total
 
-[![cpu-fan-mem](http://nwg.pl/wiki-tint2-executors/cpu-fan-mem.png)](http://nwg.pl/wiki-tint2-executors/cpu-fan-mem.png)
+[![cpu-fan-mem](http://nwg.pl/wiki-tint2-executors/psuinfo-default.png)](http://nwg.pl/wiki-tint2-executors/psuinfo-default.png))
+
+Sample longer, customized display:
+
+[![cpu-fan-mem](http://nwg.pl/wiki-tint2-executors/psuinfo-wide.png)](http://nwg.pl/wiki-tint2-executors/psuinfo-wide.png))
 
 ## Dependencies:
 
