@@ -17,10 +17,6 @@ Sample longer, customized display:
 
 [![cpu-fan-mem](http://nwg.pl/wiki-tint2-executors/psuinfo-wide.png)](http://nwg.pl/wiki-tint2-executors/psuinfo-wide.png))
 
-## Dependencies:
-
-`python` (`python3`), `python-psutil` (`python3-psutil`)
-
 ## Command:
 ```
 psuinfo [-C{components}] [-F] [-N] [-T] [-ALL] [-h] [--help]
@@ -156,5 +152,7 @@ Just place the [psuinfo](https://github.com/nwg-piotr/psuinfo/blob/master/psuinf
 #!/usr/bin/python
 ```
 with what reflects location of your Python3 interpreter.
+
+**Dependencies:** `python` (`python3`), `python-psutil` (`python3-psutil`)
 
 The script was not tested with Python versions below 3.5.
