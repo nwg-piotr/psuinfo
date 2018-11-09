@@ -58,23 +58,23 @@ Sample usage:
 ```
 No arguments, default display:
 
-[piotr@asuspro ~]$ python ~/tint2-executors/cpu-fan-mem.py
-_▁__▁___ 1.2/3.3GHz 47.0℃ 2500/m 3.5/15.6GB
+[piotr@asuspro ~]$ psuinfo
+___▁_▁__ 2.4/3.3GHz 47.0℃ 2500/m 1.9/15.6GB
 
-Custom display, CPU average load, speed and memory w/o max values:
+Custom display, CPU average load, speed and memory w/o max values + names:
 
-[piotr@asuspro ~]$ python ~/tint2-executors/cpu-fan-mem.py -Castfm
-CPU: 3.6% 1.9GHz 47.0℃ 2500/m 3.5GB
+[piotr@asuspro ~]$ psuinfo -Castfm -N
+avCPU:~3.5% SPD:2.1GHz CORE:49.0℃ FAN:2500/m MEM:2.5GB
 
-Percentage for each core:
+Custom display graphical bar, average CPU speed, core temperature, fan speed, memory used/total, drives usage:
 
-[piotr@asuspro ~]$ python ~/tint2-executors/cpu-fan-mem.py -CpStfM
-07% 02% 05% 02% 02% 05% 04% 03% 1.2/3.3GHz 49.0℃ 2500/m 3.5/15.6GB
+[piotr@asuspro ~]$ psuinfo -CgStfMD -N
+_▁___▁▁_ avSPD:2.1/3.3GHz CORE:47.0℃ FAN:2500/m MEM:1.9/15.6GB SDB3:101.0/210.6GB SDA1:154.1/915.9GB
 
-Fahrenheit temperature:
+All available information (use in terminal e.g. to check which data will be available on a certain machine). Time of execution on the very end:
 
-[piotr@asuspro ~]$ python ~/tint2-executors/cpu-fan-mem.py -F
-________ 1.8/3.3GHz 118.4℉ 2500/m 3.5/15.6GB
+[piotr@asuspro ~]$ psuinfo -ALL
+_____▁__ CPU:~3% ~2% ~3% ~2% ~2% 14% ~3% ~0% avCPU:~5.5% CPU:1.2|1.2|1.2|1.2|1.2|1.2|1.2|1.2/3.3GHz avSPD:1.2/3.3GHz CORE:48.0℃ FAN:2500/m MEM:1.9/15.6GB SWAP:0.0/8.0GB SDB3:101.0/210.6GB SDA1:154.1/915.9GB UP:2:55:36 [2.151s]
 ```
 
 ### Execution time:
