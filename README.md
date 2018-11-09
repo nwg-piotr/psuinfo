@@ -19,35 +19,38 @@ Called with no argument, the script will display following data (if appropriate 
 
 ### Command
 ```
-python ~/tint2-executors/cpu-fan-mem.py [-C{components}] [-F] [-N] [-T]
+psuinfo [-C{components}] [-F] [-N] [-T] [-ALL] [-h] [--help]
 ```
 
 ### Arguments:
 
 ```
--C stands for Components:
+-C defines Components. If none given, -CgStfM will be used by default
 
-    g - (g)raphical CPU load bar
-    p - (p)ercentage for each core (text)
-    a - (a)verage CPU load (text)
-    q - fre(q)ency for each thread
-    Q - fre(Q)ency for each thread/max frequency
-    s - current CPU (s)peed
-    S - current/max CPU (S)peed
-    t - CPU (t)emperature
-    f - (f)an speed
-    m - (m)emory in use
-    M - (M)emory in use/total
-    w - s(w)ap memory in use
-    W - s(W)ap memory in use/total
-    d - (d)rives usage in %
-    D - (D)rives used/total
-    u - (u)ptime HH:MM
-    U - (U)ptime HH:MM:SS
+  g - (g)raphical CPU load bar
+  p - (p)ercentage for each core (text)
+  a - (a)verage CPU load (text)
+  q - fre(q)ency for each thread
+  Q - fre(Q)ency for each thread/max frequency
+  s - current CPU (s)peed
+  S - current/max CPU (S)peed
+  t - CPU (t)emperature
+  f - (f)an speed
+  m - (m)emory in use
+  M - (M)emory in use/total
+  w - s(w)ap memory in use
+  W - s(W)ap memory in use/total
+  d - (d)rives as names usage in %
+  D - (D)rives as names used/total
+  n - drives as mou(n)tpoints usage in %
+  N - drives as mou(N)tpoints used/total
+  u - (u)ptime HH:MM
+  U - (U)ptime HH:MM:SS
 
 -F - use Fahrenheit instead of ℃
 -N - display field names (except for (g)raphical CPU load bar)
--T - show execution time (for setting executor interval, see below)
+-T - test execution time
+-ALL - display all possible data (for use in terminal)
 ```
 
 If no `-C` argument given, `-CgStfMu` will be used by default.
