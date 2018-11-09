@@ -8,7 +8,7 @@ url="https://github.com/nwg-piotr/psuinfo"
 license=('GPL3')
 depends=('python' 'python-psutil')
 
-source=(https://raw.githubusercontent.com/nwg-piotr/tint2-executors/master/tint2-executors)
+source=(https://github.com/nwg-piotr/psuinfo/raw/master/psuinfo)
 
 md5sums=('bb9fce2f089312aab56ef7751d0e5aca')
 
