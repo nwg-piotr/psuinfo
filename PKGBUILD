@@ -10,7 +10,7 @@ depends=('python' 'python-psutil')
 
 source=(https://github.com/nwg-piotr/psuinfo/raw/master/psuinfo)
 
-md5sums=('bb9fce2f089312aab56ef7751d0e5aca')
+md5sums=('59ea520db64b5a9711e9a3fbd815ac98')
 
 package() {
   install -D -m 755 psuinfo \
