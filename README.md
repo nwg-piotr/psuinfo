@@ -112,6 +112,8 @@ _▁___▁__ _▁___▁__ CPU:~3% ~9% ~3% ~1% ~3% ~8% ~2% ~4% CPU:~3% ~9% ~3% ~1
 
 ## Sample Tint2 executor:
 
+(fixed width font recommended)
+
 ```
 #-------------------------------------
 # Executor 1
