@@ -1,5 +1,5 @@
 # psuinfo
-A psutil-based command to display customizable system usage info in a single line. Intended for [Tint2 panel](https://gitlab.com/o9000/tint2) executors, may also be used in other panels or executed in terminal.
+A Python psutil-based command to display customizable system usage info in a single line. Intended for [Tint2 panel](https://gitlab.com/o9000/tint2) executors, may also be used in other panels or executed in terminal.
 
 Inspired by @tknomanzr 's [cpu.py](https://github.com/tknomanzr/scripts/blob/master/tint2/executors/cpu.py).
 
@@ -13,16 +13,16 @@ Called with no argument, the script will display following data (if appropriate 
 
 [![cpu-fan-mem](http://nwg.pl/wiki-tint2-executors/cpu-fan-mem.png)](http://nwg.pl/wiki-tint2-executors/cpu-fan-mem.png)
 
-### Dependencies:
+## Dependencies:
 
 `python` (`python3`), `python-psutil` (`python3-psutil`)
 
-### Command:
+## Command:
 ```
 psuinfo [-C{components}] [-F] [-N] [-T] [-ALL] [-h] [--help]
 ```
 
-### Arguments:
+## Arguments:
 
 ```
 -C defines Components. If none given, -CgStfM will be used by default
@@ -53,7 +53,7 @@ psuinfo [-C{components}] [-F] [-N] [-T] [-ALL] [-h] [--help]
 -ALL - display all possible data (for use in terminal)
 ```
 
-Sample usage:
+## Sample usage:
 
 ```
 No arguments, default display:
@@ -110,7 +110,7 @@ ___▁▁▁▁_ avCPU:~4.4% [2.003s]
 _▁___▁__ _▁___▁__ CPU:~3% ~9% ~3% ~1% ~3% ~8% ~2% ~4% CPU:~3% ~9% ~3% ~1% ~3% ~8% ~2% ~4% avCPU:~4.1% avCPU:~4.1% [2.004s]
 ```
 
-### Sample executor:
+## Sample Tint2 executor:
 
 ```
 #-------------------------------------
@@ -136,3 +136,19 @@ execp_centered = 0
 execp_icon_w = 0
 execp_icon_h = 0
 ```
+
+## Installation:
+
+### Arch Linux
+
+Install the [psuinfo](https://aur.archlinux.org/packages/psuinfo) AUR package.
+
+### Other distributions
+
+Just place the [psuinfo](https://github.com/nwg-piotr/psuinfo/blob/master/psuinfo) file in your /usr/bin folder. You may need to replace the line:
+```
+#!/usr/bin/python
+```
+with what reflects location of your Python3 interpreter.
+
+The script was not tested with Python versions below 3.5.
