@@ -1,5 +1,5 @@
 # psuinfo
-A psutil-based command to display customizable system usage info in a single line, for Tint2 executors or CLI
+A psutil-based command to display customizable system usage info in a single line. Intended for [Tint2 panel](https://gitlab.com/o9000/tint2) executors, may also be used in other panels or executed in terminal.
 
 Inspired by @tknomanzr 's [cpu.py](https://github.com/tknomanzr/scripts/blob/master/tint2/executors/cpu.py).
 
