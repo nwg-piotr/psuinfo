@@ -1,0 +1,312 @@
+#!/usr/bin/python
+# _*_ coding: utf-8 _*_
+
+"""
+A psutil-based command to display customizable system usage info in a single line, intended for Tint2 executors or CLI
+
+Author: Piotr Miller
+e-mail: nwg.piotr@gmail.com
+Website: http://nwg.pl
+Project: https://github.com/nwg-piotr/psuinfo
+License: GPL3
+
+Inspired by https://github.com/tknomanzr/scripts/blob/master/tint2/executors/cpu.py by William Bradley (@tknomanzr)
+"""
+
+import sys
+import psutil
+import re
+import time
+
+
+def main():
+    fahrenheit = False
+    names = False
+    testing = False
+    time_start = None
+    components = "gStfM"
+
+    for i in range(1, len(sys.argv)):
+        if sys.argv[i] == "-h" or sys.argv[i] == "--help":
+            print_help()
+            exit(0)
+
+        if sys.argv[i] == "-F":
+            fahrenheit = True
+
+        if sys.argv[i] == "-N":
+            names = True
+
+        if sys.argv[i] == "-T":
+            testing = True
+
+        if sys.argv[i].startswith("-C"):
+            components = sys.argv[i][2::]
+
+        if sys.argv[i] == "-ALL":
+            components = "gpaQStfMWDU"
+            names = True
+            testing = True
+
+    if testing:
+        time_start = int(round(time.time() * 1000))
+
+    pcpu, avg, speed, freqs, temp, fans, b_time, \
+        memory, swap, disks_usage = None, None, None, None, None, None, None, None, None, None
+
+    output = ""
+
+    # Prepare ONLY requested data, ONLY once
+    if "g" or "p" in components:
+        try:
+            pcpu = psutil.cpu_percent(interval=1, percpu=True)
+        except:
+            pass
+
+    if "a" in components:
+        try:
+            avg = str(psutil.cpu_percent(interval=1))
+            if len(avg) < 4:
+                avg = "~" + avg
+        except:
+            pass
+
+    if "s" or "S" in components:
+        try:
+            speed = psutil.cpu_freq(False)
+        except:
+            pass
+
+    if "q" or "Q" in components:
+        try:
+            freqs = psutil.cpu_freq(True)
+            if len(freqs) == 0:
+                freqs = None
+        except:
+            pass
+
+    if "t" in components:
+        try:
+            temp = psutil.sensors_temperatures(fahrenheit)
+        except:
+            pass
+
+    if "f" in components:
+        try:
+            fans = psutil.sensors_fans()
+        except:
+            pass
+
+    if "m" or "M" in components:
+        try:
+            memory = psutil.virtual_memory()
+        except:
+            pass
+
+    if "w" or "W" in components:
+        try:
+            s = psutil.swap_memory()
+            swap = s[1], s[0]
+        except:
+            pass
+
+    drives = []
+    # Find drive names, mountpoints
+    if "d" or "D" or "n" or "N" in components:
+        try:
+            d = psutil.disk_partitions()
+            # This will store name, mountpoint
+            for entry in d:
+                n = entry[0].split("/")
+                name = n[len(n) - 1]
+                # name, mountpoint
+                drive = name, entry[1]
+                drives.append(drive)
+        except:
+            pass
+
+    if "d" or "D" in components:
+        try:
+            disks_usage = []
+            for drive in drives:
+                # Search drives by path
+                data = psutil.disk_usage(drive[1])
+                # Store name, used, total, percent
+                essential = drive[0].upper(), data[1], data[0], data[3]
+                disks_usage.append(essential)
+        except:
+            pass
+
+    if "n" or "N" in components:
+        try:
+            disks_usage = []
+            for drive in drives:
+                # Search drives by path
+                data = psutil.disk_usage(drive[1])
+                # Store mountpoint, used, total, percent
+                essential = drive[1], data[1], data[0], data[3]
+                disks_usage.append(essential)
+        except:
+            pass
+
+    if "u" or "U" in components:
+        try:
+            b_time = psutil.boot_time()
+        except:
+            pass
+
+    # Build output component after component
+    for char in components:
+        if char == "g" and pcpu is not None:
+            output += " " + graph_per_cpu(pcpu) + " "
+
+        if char == "p" and pcpu is not None:
+            output += " CPU:" if names else " "
+            output += per_cpu(pcpu) + " "
+
+        if char == "a" and avg is not None:
+            output += " avCPU:" if names else " "
+            output += avg + "% "
+
+        if char == "q" and freqs is not None:
+            output += " CPU:" if names else " "
+            output += freq_per_cpu(freqs)[0][:-1] + "GHz "
+
+        if char == "Q" and freqs is not None:
+            output += " CPU:" if names else " "
+            result = freq_per_cpu(freqs)
+            output += result[0][:-1] + "/" + str(result[1]) + "GHz "
+
+        if char == "s" and speed is not None:
+            output += " SPD:" if names else " "
+            output += str(round(speed[0] / 1000, 1)) + "GHz "
+
+        if char == "S" and speed is not None:
+            output += " avSPD:" if names else " "
+            output += str(round(speed[0] / 1000, 1)) + "/" + str(round(speed[2] / 1000, 1)) + "GHz "
+
+        if char == "t" and temp is not None and len(temp) > 0:
+            output += " CORE:" if names else " "
+            # "acpitz" for ACPI Thermal Zone
+            output += str(temp["coretemp"][0][1])
+            output += "℉ " if fahrenheit else "℃ "
+
+        if char == "f" and fans is not None and len(fans) > 0:
+            output += " FAN:" if names else " "
+            fan0 = next(iter(fans.values()))
+            output += str(fan0[0][1]) + "/m "
+
+        if char == 'm' and memory is not None:
+            output += " MEM:" if names else " "
+            output += str(round((memory[0] - memory[1]) / 1073741824, 1)) + "GB "
+
+        if char == 'M' and memory is not None:
+            output += " MEM:" if names else " "
+            output += str(round((memory[3]) / 1073741824, 1)) + "/" + str(
+                round(memory[0] / 1073741824, 1)) + "GB "
+
+        if char == 'u' and b_time is not None:
+            up_time = int(time.time()) - b_time
+            m, s = divmod(up_time, 60)
+            h, m = divmod(m, 60)
+            output += " UP:" if names else " "
+            output += "%d:%02d " % (h, m)
+
+        if char == 'U' and b_time is not None:
+            up_time = int(time.time()) - b_time
+            m, s = divmod(up_time, 60)
+            h, m = divmod(m, 60)
+            output += " UP:" if names else " "
+            output += "%d:%02d:%02d " % (h, m, s)
+
+        if char == "w" and swap is not None:
+            output += " SWAP:" if names else " "
+            output += str(round(swap[0] / 1073741824, 1)) + "GB "
+
+        if char == "W" and swap is not None:
+            output += " SWAP:" if names else " "
+            output += str(round(swap[0] / 1073741824, 1)) + "/"
+            output += str(round(swap[1] / 1073741824, 1)) + "GB "
+
+        if char == "d" or char == "n" and disks_usage is not None:
+            for entry in disks_usage:
+                output += " " + entry[0] + ":"
+                output += str(entry[3]) + "% "
+
+        if char == "D" or char == "N" and disks_usage is not None:
+            for entry in disks_usage:
+                output += " " + entry[0] + ":"
+                output += str(round(entry[1] / 1073741824, 1)) + "/"
+                output += str(round(entry[2] / 1073741824, 1)) + "GB "
+
+    if testing:
+        output += " [" + str(int((round(time.time() * 1000)) - time_start) / 1000) + "s]"
+
+    # remove double, leading and trailing spaces before printing
+    print(re.sub(' +', ' ', output).strip())
+
+
+def per_cpu(result):
+    string = ""
+    for val in result:
+        proc = str(int(round(val, 1)))
+        if len(proc) < 2:
+            proc = "~" + proc
+        string += proc + "% "
+    return string
+
+
+def freq_per_cpu(result):
+    string = ""
+    max_freq = 0
+    for val in result:
+        freq = str(round(val[0] / 1000, 1))
+        string += freq + "|"
+        max_freq = str(round(val[2] / 1000, 1))
+
+    return string, max_freq
+
+
+def graph_per_cpu(result):
+    graph = "_▁▂▃▄▅▆▇███"
+
+    string = ""
+    for val in result:
+        proc = int(round(val / 10, 0))
+        string += graph[proc]
+    return string
+
+
+def print_help():
+    print("\nArguments: [-C{components}] [-F] [-N] [-T] [-ALL] [-h] [--help]")
+
+    print("\n-C defines Components. If none given, -CgStfM will be used by default\n")
+    print("  g - (g)raphical CPU load bar")
+    print("  p - (p)ercentage for each core (text)")
+    print("  a - (a)verage CPU load (text)")
+    print("  q - fre(q)ency for each thread")
+    print("  Q - fre(Q)ency for each thread/max frequency")
+    print("  s - current CPU (s)peed")
+    print("  S - current/max CPU (S)peed")
+    print("  t - CPU (t)emperature")
+    print("  f - (f)an speed")
+    print("  m - (m)emory in use")
+    print("  M - (M)emory in use/total")
+    print("  w - s(w)ap memory in use")
+    print("  W - s(W)ap memory in use/total")
+    print("  d - (d)rives as names usage in %")
+    print("  D - (D)rives as names used/total")
+    print("  n - drives as mou(n)tpoints usage in %")
+    print("  N - drives as mou(N)tpoints used/total")
+    print("  u - (u)ptime HH:MM")
+    print("  U - (U)ptime HH:MM:SS")
+
+    print("\n-F - use Fahrenheit instead of ℃")
+    print("-N - display field names (except for (g)raphical CPU load bar)")
+    print("-T - test execution time")
+    print("-ALL - display all possible data (for use in terminal)\n")
+
+
+if __name__ == "__main__":
+    main()
+
