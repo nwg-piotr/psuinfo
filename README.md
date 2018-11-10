@@ -6,9 +6,9 @@ Inspired by @tknomanzr 's [cpu.py](https://github.com/tknomanzr/scripts/blob/mas
 ___
 New in 0.0.2-1 version:
 
-```
--Cc - used memory percentage
--CC - free memory perCentage
+```text
+-Cc - used memory per(c)entage
+-CC - free memory per(C)entage
 -S<number> - number of spaces between components (-S2 by default)
 ```
 ___
