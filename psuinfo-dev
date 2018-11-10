@@ -54,7 +54,7 @@ def main():
         separator = " " * spacing
 
         if sys.argv[i].upper() == "-ALL":
-            components = "gpaQStfMWDU"
+            components = "gpaQStfMcWDU"
             names = True
             testing = True
 
@@ -313,7 +313,7 @@ def graph_per_cpu(result):
 
 
 def print_help():
-    print("\nArguments: [-C{components}] [-F] [-N] [-T] [-ALL] [-h] [--help]")
+    print("\nArguments: [-C{components}] [-F] [-N] [-S<number>] [-T] [-all] [-h] [--help]")
 
     print("\n-C defines Components. If none given, -CgStfM will be used by default\n")
     print("  g - (g)raphical CPU load bar")
@@ -327,6 +327,8 @@ def print_help():
     print("  f - (f)an speed")
     print("  m - (m)emory in use")
     print("  M - (M)emory in use/total")
+    print("  c - used memory per(c)entage")
+    print("  C - free memory per(C)entage")
     print("  w - s(w)ap memory in use")
     print("  W - s(W)ap memory in use/total")
     print("  d - (d)rives as names usage in %")
@@ -338,8 +340,9 @@ def print_help():
 
     print("\n-F - use Fahrenheit instead of ℃")
     print("-N - display field names (except for (g)raphical CPU load bar)")
+    print("-S<number> - number of spaces between components (-S2 by default)")
     print("-T - test execution time")
-    print("-ALL - display all possible data (for use in terminal)\n")
+    print("-all - display all possible data (for use in terminal)\n")
 
 
 if __name__ == "__main__":
