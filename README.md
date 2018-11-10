@@ -7,8 +7,8 @@ ___
 New in 0.0.2-1 version:
 
 ```
--Cc - used memory per©entage
--CC - free memory per©entage
+-Cc - used memory percentage
+-CC - free memory perCentage
 -S<number> - number of spaces between components (-S2 by default)
 ```
 ___
