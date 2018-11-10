@@ -77,7 +77,7 @@ def main():
         try:
             avg = str(psutil.cpu_percent(interval=1))
             if len(avg) < 4:
-                avg = "~" + avg
+                avg = " " + avg
         except:
             pass
 
@@ -286,7 +286,7 @@ def per_cpu(result):
     for val in result:
         proc = str(int(round(val, 1)))
         if len(proc) < 2:
-            proc = "~" + proc
+            proc = " " + proc
         string += proc + "% "
     return string
 
