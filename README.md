@@ -19,7 +19,7 @@ A longer, customized display:
 
 ## Command:
 ```
-psuinfo [-C{components}] [-F] [-N] [-T] [-ALL] [-h] [--help]
+psuinfo [-C{components}] [-F] [-N] [-S<number>] [-T] [-all] [-h] [--help]
 ```
 
 ## Arguments:
@@ -38,6 +38,8 @@ psuinfo [-C{components}] [-F] [-N] [-T] [-ALL] [-h] [--help]
   f - (f)an speed
   m - (m)emory in use
   M - (M)emory in use/total
+  c - used memory per(c)entage
+  C - free memory per(C)entage
   w - s(w)ap memory in use
   W - s(W)ap memory in use/total
   d - (d)rives as names usage in %
@@ -49,8 +51,9 @@ psuinfo [-C{components}] [-F] [-N] [-T] [-ALL] [-h] [--help]
 
 -F - use Fahrenheit instead of ℃
 -N - display field names (except for (g)raphical CPU load bar)
+-S<number> - number of spaces between components (-S2 by default)
 -T - test execution time
--ALL - display all possible data (for use in terminal)
+-all - display all possible data (for use in terminal)
 ```
 
 ## Sample usage:
