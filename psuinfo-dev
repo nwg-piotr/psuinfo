@@ -107,7 +107,7 @@ def main():
         except:
             pass
 
-    if "m" or "M" in components:
+    if "m" or "M" or "z" or "Z" in components:
         try:
             memory = psutil.virtual_memory()
         except:
@@ -206,7 +206,6 @@ def main():
         if char == "t" and temp is not None and len(temp) > 0:
             if names:
                 output += "CORE:"
-            # "acpitz" for ACPI Thermal Zone
             output += str(temp["coretemp"][0][1])
             output += "℉ " if fahrenheit else "℃" + separator
 
@@ -226,6 +225,16 @@ def main():
                 output += "MEM:"
             output += str(round((memory[3]) / 1073741824, 1)) + "/" + str(
                 round(memory[0] / 1073741824, 1)) + "GB" + separator
+
+        if char == 'c' and memory is not None:
+            if names:
+                output += "MEM:"
+            output += str(memory[2]) + "%" + separator
+
+        if char == 'C' and memory is not None:
+            if names:
+                output += "MEM:"
+            output += str(100 - memory[2]) + "%" + separator
 
         if char == 'u' and b_time is not None:
             up_time = int(time.time()) - b_time
