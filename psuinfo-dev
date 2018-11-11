@@ -15,7 +15,6 @@ Inspired by https://github.com/tknomanzr/scripts/blob/master/tint2/executors/cpu
 
 import sys
 import psutil
-import re
 import time
 
 
