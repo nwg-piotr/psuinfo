@@ -15,7 +15,6 @@ Inspired by https://github.com/tknomanzr/scripts/blob/master/tint2/executors/cpu
 
 import sys
 import psutil
-import re
 import time
 
 
@@ -77,7 +76,7 @@ def main():
         try:
             avg = str(psutil.cpu_percent(interval=1))
             if len(avg) < 4:
-                avg = "~" + avg
+                avg = " " + avg
         except:
             pass
 
@@ -113,10 +112,9 @@ def main():
         except:
             pass
 
-    if "w" or "W" in components:
+    if "w" or "W" or "x" in components:
         try:
-            s = psutil.swap_memory()
-            swap = s[1], s[0]
+            swap = psutil.swap_memory()
         except:
             pass
 
@@ -255,13 +253,18 @@ def main():
         if char == "w" and swap is not None:
             if names:
                 output += "SWAP:"
-            output += str(round(swap[0] / 1073741824, 1)) + "GB" + separator
+            output += str(round(swap[1] / 1073741824, 1)) + "GB" + separator
 
         if char == "W" and swap is not None:
             if names:
                 output += "SWAP:"
-            output += str(round(swap[0] / 1073741824, 1)) + "/"
-            output += str(round(swap[1] / 1073741824, 1)) + "GB" + separator
+            output += str(round(swap[1] / 1073741824, 1)) + "/"
+            output += str(round(swap[0] / 1073741824, 1)) + "GB" + separator
+
+        if char == "x" and swap is not None:
+            if names:
+                output += "SWAP:"
+            output += str(swap[3]) + "%" + separator
 
         if char == "d" or char == "n" and disks_usage is not None:
             for entry in disks_usage:
@@ -286,7 +289,7 @@ def per_cpu(result):
     for val in result:
         proc = str(int(round(val, 1)))
         if len(proc) < 2:
-            proc = "~" + proc
+            proc = " " + proc
         string += proc + "% "
     return string
 
@@ -331,6 +334,7 @@ def print_help():
     print("  C - free memory per(C)entage")
     print("  w - s(w)ap memory in use")
     print("  W - s(W)ap memory in use/total")
+    print("  x - swap usage in %")
     print("  d - (d)rives as names usage in %")
     print("  D - (D)rives as names used/total")
     print("  n - drives as mou(n)tpoints usage in %")
