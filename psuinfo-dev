@@ -112,10 +112,9 @@ def main():
         except:
             pass
 
-    if "w" or "W" in components:
+    if "w" or "W" or "x" in components:
         try:
-            s = psutil.swap_memory()
-            swap = s[1], s[0]
+            swap = psutil.swap_memory()
         except:
             pass
 
@@ -254,13 +253,18 @@ def main():
         if char == "w" and swap is not None:
             if names:
                 output += "SWAP:"
-            output += str(round(swap[0] / 1073741824, 1)) + "GB" + separator
+            output += str(round(swap[1] / 1073741824, 1)) + "GB" + separator
 
         if char == "W" and swap is not None:
             if names:
                 output += "SWAP:"
-            output += str(round(swap[0] / 1073741824, 1)) + "/"
-            output += str(round(swap[1] / 1073741824, 1)) + "GB" + separator
+            output += str(round(swap[1] / 1073741824, 1)) + "/"
+            output += str(round(swap[0] / 1073741824, 1)) + "GB" + separator
+
+        if char == "x" and swap is not None:
+            if names:
+                output += "SWAP:"
+            output += str(swap[3]) + "%" + separator
 
         if char == "d" or char == "n" and disks_usage is not None:
             for entry in disks_usage:

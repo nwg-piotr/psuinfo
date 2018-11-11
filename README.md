@@ -52,6 +52,7 @@ psuinfo [-C{components}] [-F] [-N] [-S<number>] [-T] [-all] [-h] [--help]
   C - free memory per(C)entage
   w - s(w)ap memory in use
   W - s(W)ap memory in use/total
+  x - swap usage in %
   d - (d)rives as names usage in %
   D - (D)rives as names used/total
   n - drives as mou(n)tpoints usage in %
