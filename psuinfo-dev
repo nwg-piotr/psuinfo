@@ -334,6 +334,7 @@ def print_help():
     print("  C - free memory per(C)entage")
     print("  w - s(w)ap memory in use")
     print("  W - s(W)ap memory in use/total")
+    print("  x - swap usage in %")
     print("  d - (d)rives as names usage in %")
     print("  D - (D)rives as names used/total")
     print("  n - drives as mou(n)tpoints usage in %")
