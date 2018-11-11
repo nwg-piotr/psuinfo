@@ -4,12 +4,11 @@ A Python psutil-based command to display customizable system usage info in a sin
 Inspired by @tknomanzr 's [cpu.py](https://github.com/tknomanzr/scripts/blob/master/tint2/executors/cpu.py).
 
 ___
-New in 0.0.2-1 version:
+New in 0.0.3-1 version:
 
 ```text
--Cc - used memory per(c)entage
--CC - free memory per(C)entage
--S<number> - number of spaces between components (-S2 by default)
+~ character removed from output
+-Cx for swap usage in %
 ```
 ___
 
