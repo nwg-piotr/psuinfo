@@ -72,18 +72,18 @@ psuinfo [-C{components}] [-F] [-N] [-S<number>] [-T] [-all] [-h] [--help]
 No arguments, default display:
 
 [piotr@asuspro ~]$ psuinfo
-___▁_▁__ 2.4/3.3GHz 47.0℃ 2500/m 1.9/15.6GB
+_▁______ 1.2/3.3GHz 48.0℃ 2500/m 1.3/15.6GB
 
 Custom display, CPU average load, speed and memory w/o max values + names:
 
 [piotr@asuspro ~]$ psuinfo -Castfm -N
-avCPU:~3.5% SPD:2.1GHz CORE:49.0℃ FAN:2500/m MEM:2.5GB
+avCPU: 3.4%  SPD:1.5GHz  CORE:48.0℃  FAN:2500/m   MEM:1.9GB
 
 Custom display with graphical bar, average CPU speed, core temperature, fan speed, 
 memory used/total, drives usage:
 
 [piotr@asuspro ~]$ psuinfo -CgStfMD -N
-_▁___▁▁_ avSPD:2.1/3.3GHz CORE:47.0℃ FAN:2500/m MEM:1.9/15.6GB SDB3:101.0/210.6GB SDA1:154.1/915.9GB
+_▁___▁__  avSPD:1.4/3.3GHz  CORE:49.0℃  FAN:2500/m  MEM:1.3/15.6GB  SDB3:101.1/210.6GB  SDA1:154.1/915.9GB
 
 All available information (use in terminal e.g. to check which data will be available on a certain machine). 
 Time of execution on the very end:
@@ -98,7 +98,7 @@ Since execution of the `psutil.cpu_percent()` function takes a certain time (set
 
 ```
 [piotr@asuspro ~]$ psuinfo -CgStfM -T
-▁__▁▁▁▁_ 1.6/3.3GHz 49.0℃ 2500/m 1.9/15.6GB [1.113s]
+▁▁__▁___  2.0/3.3GHz  48.0℃  2500/m  1.3/15.6GB  [1.012s]
 ```
 
 Executing the command above took 1.113 second. To use it in a Tint2 executor, it makes sense to set at least 2 seconds long interval:
@@ -114,13 +114,13 @@ execp_interval = 2
 If you'd like to use (`g` **and**/**or** `p`) **and** `a`, the executor interval should be > 2 seconds.
 ```
 piotr@asuspro ~]$ psuinfo -Cga -T -N
-▁_____▁_ avCPU:~4.0% [2.003s]
+_____▁__  avCPU: 3.0%  [2.139s]
 ``` 
 Since data are being collected only once, multiple use of components doesn't change much:
 ```
 ___▁▁▁▁_ avCPU:~4.4% [2.003s]
 [piotr@asuspro ~]$ psuinfo -Cggppaa -T -N
-_▁___▁__ _▁___▁__ CPU:~3% ~9% ~3% ~1% ~3% ~8% ~2% ~4% CPU:~3% ~9% ~3% ~1% ~3% ~8% ~2% ~4% avCPU:~4.1% avCPU:~4.1% [2.004s]
+___▁____  ___▁____  CPU: 4%  2%  2%  7%  2%  5%  1%  3%   CPU: 4%  2%  2%  7%  2%  5%  1%  3%   avCPU: 3.9%  avCPU: 3.9%  [2.105s]
 ```
 
 ## Sample Tint2 executor:
