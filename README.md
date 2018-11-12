@@ -88,8 +88,8 @@ _▁___▁▁_ avSPD:2.1/3.3GHz CORE:47.0℃ FAN:2500/m MEM:1.9/15.6GB SDB3:101.
 All available information (use in terminal e.g. to check which data will be available on a certain machine). 
 Time of execution on the very end:
 
-[piotr@asuspro ~]$ psuinfo -ALL
-_____▁__ CPU:~3% ~2% ~3% ~2% ~2% 14% ~3% ~0% avCPU:~5.5% CPU:1.2|1.2|1.2|1.2|1.2|1.2|1.2|1.2/3.3GHz avSPD:1.2/3.3GHz CORE:48.0℃ FAN:2500/m MEM:1.9/15.6GB SWAP:0.0/8.0GB SDB3:101.0/210.6GB SDA1:154.1/915.9GB UP:2:55:36 [2.151s]
+[piotr@asuspro ~]$ psuinfo -all
+___▁____  CPU: 2%  3%  3%  8%  3%  2%  3%  3%   avCPU: 2.4%  CPU:1.3|1.3|1.3|1.3|1.3|1.3|1.3|1.3/3.3GHz  avSPD:1.3/3.3GHz  CORE:47.0℃  FAN:2500/m  MEM:1.3/15.6GB  MEM:12.3%  SWAP:0.0/8.0GB  SDB3:101.1/210.6GB  SDA1:154.1/915.9GB  UP:1:07:03  [2.148s]
 ```
 
 ### Execution time:
