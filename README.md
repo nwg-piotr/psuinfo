@@ -4,11 +4,10 @@ A Python psutil-based command to display customizable system usage info in a sin
 Inspired by @tknomanzr 's [cpu.py](https://github.com/tknomanzr/scripts/blob/master/tint2/executors/cpu.py).
 
 ___
-New in 0.0.3-1 version:
+New in 0.0.3-2 version:
 
 ```text
-~ character removed from output
--Cx for swap usage in %
+-S<string> argument for custom separator
 ```
 ___
 
@@ -62,6 +61,7 @@ psuinfo [-C{components}] [-F] [-N] [-S<number>] [-T] [-all] [-h] [--help]
 -F - use Fahrenheit instead of ℃
 -N - display field names (except for (g)raphical CPU load bar)
 -S<number> - number of spaces between components (-S2 by default)
+-S<string> - a custom separator (use ' | ' to include spaces)
 -T - test execution time
 -all - display all possible data (for use in terminal)
 ```
