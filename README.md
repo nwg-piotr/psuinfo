@@ -7,7 +7,7 @@ ___
 New in 0.0.3-2 version:
 
 ```text
--S<string> argument for custom separator
+-S<string> argument for custom separators
 ```
 ___
 
