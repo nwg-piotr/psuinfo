@@ -14,7 +14,7 @@ ___
 
 Called with no argument, the script will display following data (if appropriate sensors available):
 
-[![cpu-fan-mem](http://nwg.pl/wiki-tint2-executors/psuinfo-default.png)](http://nwg.pl/wiki-tint2-executors/psuinfo-def.png)
+[![cpu-fan-mem](http://nwg.pl/wiki-tint2-executors/psuinfo-def.png)](http://nwg.pl/wiki-tint2-executors/psuinfo-def.png)
 
 - graphical CPU load bar
 - CPU speed current/max
@@ -24,7 +24,7 @@ Called with no argument, the script will display following data (if appropriate 
 
 You may customize display, using arguments described below:
 
-[![cpu-fan-mem](http://nwg.pl/wiki-tint2-executors/psuinfo-wide.png)](http://nwg.pl/wiki-tint2-executors/psuinfo-customized.png)
+[![cpu-fan-mem](http://nwg.pl/wiki-tint2-executors/psuinfo-customized.png)](http://nwg.pl/wiki-tint2-executors/psuinfo-customized.png)
 
 ## Command:
 ```
