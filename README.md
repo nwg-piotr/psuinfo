@@ -85,6 +85,11 @@ memory used/total, drives usage:
 [piotr@asuspro ~]$ psuinfo -CgStfMD -N
 _▁___▁__  avSPD:1.4/3.3GHz  CORE:49.0℃  FAN:2500/m  MEM:1.3/15.6GB  SDB3:101.1/210.6GB  SDA1:154.1/915.9GB
 
+You may use a custom separator:
+
+[piotr@asuspro ~]$ psuinfo -CgStfmxdu -N -S' ┊ '
+__▁_▁___ ┊ avSPD:1.8/3.3GHz ┊ CORE:47.0℃ ┊ FAN:2500/m ┊ MEM:2.0GB ┊ SWAP:0.0% ┊ SDB3:50.6% ┊ SDA1:15.4% ┊ UP:3:06
+
 All available information (use in terminal e.g. to check which data will be available on a certain machine). 
 Time of execution on the very end:
 
