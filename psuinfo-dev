@@ -281,15 +281,14 @@ def main():
     if testing:
         output += "[" + str(int((round(time.time() * 1000)) - time_start) / 1000) + "s]" + separator
 
-    os.system('echo "/home/piotr/PycharmProjects/psuinfo/icons/cpu.svg"')
+    os.system("echo '/home/piotr/PycharmProjects/psuinfo/icons/cpu.svg'")
 
     # remove leading and trailing separator
     l = len(separator)
     if l > 0:
         output = output[l:-l]
 
-    #print(output)
-    os.system('echo "' + output + '"')
+    print(output)
 
 
 def per_cpu(result):
