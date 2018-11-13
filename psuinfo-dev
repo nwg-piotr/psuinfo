@@ -16,6 +16,7 @@ Inspired by https://github.com/tknomanzr/scripts/blob/master/tint2/executors/cpu
 import sys
 import psutil
 import time
+import os
 
 
 def main():
@@ -280,12 +281,15 @@ def main():
     if testing:
         output += "[" + str(int((round(time.time() * 1000)) - time_start) / 1000) + "s]" + separator
 
+    os.system('echo "/home/piotr/PycharmProjects/psuinfo/icons/cpu.svg"')
+
     # remove leading and trailing separator
     l = len(separator)
     if l > 0:
-        print(output[l:-l])
-    else:
-        print(output)
+        output = output[l:-l]
+
+    #print(output)
+    os.system('echo "' + output + '"')
 
 
 def per_cpu(result):
