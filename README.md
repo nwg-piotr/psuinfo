@@ -4,10 +4,10 @@ A Python psutil-based command to display customizable system usage info in a sin
 Inspired by @tknomanzr 's [cpu.py](https://github.com/tknomanzr/scripts/blob/master/tint2/executors/cpu.py).
 
 ___
-New in 0.0.3-2 version:
+New in 0.0.4-1 version:
 
 ```text
--S<string> argument for custom separators
+-I<component> argument to display an icon before value. 1 icon / component per executor allowed. 
 ```
 ___
 
@@ -64,6 +64,10 @@ psuinfo [-C{components}] [-F] [-N] [-S<number>] [-T] [-all] [-h] [--help]
 -S<string> - a custom separator (use ' | ' to include spaces)
 -T - test execution time
 -all - display all possible data (for use in terminal)
+
+-I<component> - allows to show an icon before text. 
+Only 1 component per executor. E.g. psuinfo -Ia displays CPU icon and average CPU load value.
+
 ```
 
 ## Sample usage:
