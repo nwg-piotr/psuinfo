@@ -26,6 +26,30 @@ def main():
     time_start = None
     components = "gStfM"
     separator = "  "
+    home = os.getenv("HOME")
+    icon = ""
+    icons = {'g': '',
+                'p': 'cpu.svg',
+                'a': 'cpu.svg',
+                'q': 'cpu.svg',
+                'Q': 'cpu.svg',
+                's': 'cpu.svg',
+                'S': 'cpu.svg',
+                't': 'temp.svg',
+                'f': 'fan.svg',
+                'm': 'mem.svg',
+                'M': 'mem.svg',
+                'c': 'mem.svg',
+                'C': 'mem.svg',
+                'w': 'swap.svg',
+                'W': 'swap.svg',
+                'x': 'swap.svg',
+                'd': 'hdd.svg',
+                'D': 'hdd.svg',
+                'n': 'hdd.svg',
+                'N': 'hdd.svg',
+                'u': 'up.svg',
+                'U': 'up.svg'}
 
     for i in range(1, len(sys.argv)):
         if sys.argv[i] == "-h" or sys.argv[i] == "--help":
@@ -57,6 +81,12 @@ def main():
             components = "gpaQStfMcWDU"
             names = True
             testing = True
+
+        if sys.argv[i].startswith("-I"):
+            # We can only have one icon per executor
+            components = sys.argv[i][2::2]
+            icon = icons_path(home) + icons[components]
+            print(icon)
 
     if testing:
         time_start = int(round(time.time() * 1000))
@@ -281,7 +311,7 @@ def main():
     if testing:
         output += "[" + str(int((round(time.time() * 1000)) - time_start) / 1000) + "s]" + separator
 
-    os.system("echo '/home/piotr/PycharmProjects/psuinfo/icons/cpu.svg'")
+    #os.system("echo '" + home + "/.local/share/psuinfo/up.svg'")
 
     # remove leading and trailing separator
     l = len(separator)
@@ -355,6 +385,14 @@ def print_help():
     print("-S<string> for custom separator (use \' | \' to include spaces)")
     print("-T - test execution time")
     print("-all - display all possible data (for use in terminal)\n")
+
+
+def icons_path(home):
+    local = home + '/.local/share/psuinfo'
+    if os.path.exists(local):
+        return local + "/"
+    else:
+        return "/usr/share/psuinfo/"
 
 
 if __name__ == "__main__":
