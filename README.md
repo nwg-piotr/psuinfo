@@ -7,7 +7,7 @@ ___
 New in 0.0.4-1 version:
 
 ```text
--I<component> argument to display an icon before value. 1 icon / component per executor allowed. 
+-I<component> argument to display an icon before value. Only 1 component per executor allowed. 
 ```
 Bug fixes in 0.0.4-2:
 ```
