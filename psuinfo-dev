@@ -2,7 +2,7 @@
 # _*_ coding: utf-8 _*_
 
 """
-A psutil-based command to display customizable system usage info in a single line, intended for Tint2 executors or CLI
+A psutil-based command to display customizable system usage info in a single line, intended for Tint2 executors
 
 Author: Piotr Miller
 e-mail: nwg.piotr@gmail.com
