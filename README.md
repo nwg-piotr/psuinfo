@@ -4,10 +4,10 @@ A Python psutil-based command to display customizable system usage info in a sin
 Inspired by @tknomanzr 's [cpu.py](https://github.com/tknomanzr/scripts/blob/master/tint2/executors/cpu.py).
 
 ___
-New in 0.0.3-2 version:
+New in 0.0.4-1 version:
 
 ```text
--S<string> argument for custom separators
+-I<component> argument to display an icon before value. 1 icon / component per executor allowed. 
 ```
 ___
 
