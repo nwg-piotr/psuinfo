@@ -9,6 +9,10 @@ New in 0.0.4-1 version:
 ```text
 -I<component> argument to display an icon before value. 1 icon / component per executor allowed. 
 ```
+Bug fixes in 0.0.4-2:
+```
+Missing ℉ sign restored. Missing help line added.
+```
 ___
 
 Called with no argument, the script will display following data (if appropriate sensors available):
