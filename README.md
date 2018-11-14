@@ -64,6 +64,10 @@ psuinfo [-C{components}] [-F] [-N] [-S<number>] [-T] [-all] [-h] [--help]
 -S<string> - a custom separator (use ' | ' to include spaces)
 -T - test execution time
 -all - display all possible data (for use in terminal)
+
+-I<component> - allows to show an icon before text. 
+Only 1 component per executor. E.g. psuinfo -Ia displays CPU icon and average CPU load value.
+
 ```
 
 ## Sample usage:
