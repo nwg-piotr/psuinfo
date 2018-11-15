@@ -75,8 +75,7 @@ psuinfo [-C{components}] [-F] [-N] [-S<number>] [-T] [-all] [-h] [--help]
 -T - test execution time
 -all - display all possible data (for use in terminal)
 
--I<component> - allows to show an icon before text (except for the (g) component!)
-Only 1 component per executor. E.g. psuinfo -Ia displays CPU icon and average CPU load value.
+-I<component> - display an icon and text value; DO NOT USE with (g) component
 
 ```
 
