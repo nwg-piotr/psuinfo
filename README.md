@@ -7,7 +7,8 @@ ___
 New in 0.0.5-1 version:
 
 ```text
--W<number> - selects 0 to n-th element from multiple output (drives, mountpoints); use together with -I<component>
+-W<number> - selects 0 to n-th element from multiple output (drives, mountpoints)
+(use together with -I<component>)
 ```
 ___
 
