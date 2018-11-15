@@ -26,7 +26,7 @@ You may customize display, using arguments described below:
 
 [![customized display](http://nwg.pl/wiki-tint2-executors/psuinfo-customized.png)](http://nwg.pl/wiki-tint2-executors/psuinfo-customized.png)
 
-You may also **prepend values with appropriate icons** instead (/together with) names. Only 1 value per executor allowed. To do so, use `psuinfo -I<component>` format. See components description below.
+You may also **prepend values with appropriate icons** instead of / together with names. Only 1 value per executor allowed. To do so, use `psuinfo -I<component>` format. See components description below.
 
 [![executors with icons](http://nwg.pl/wiki-tint2-executors/psuinfo-icons-0051.png)](http://nwg.pl/wiki-tint2-executors/psuinfo-icons-0051.png)
 
