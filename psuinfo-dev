@@ -212,7 +212,8 @@ def main():
             if names:
                 output += "CORE:"
             output += str(temp["coretemp"][0][1])
-            output += "℉ " if fahrenheit else "℃" + separator
+            output += "℉" if fahrenheit else "℃"
+            output += separator
 
         if char == "f" and fans is not None and len(fans) > 0:
             if names:
@@ -359,6 +360,8 @@ def print_help():
     print("-S<string> for custom separator (use \' | \' to include spaces)")
     print("-T - test execution time")
     print("-all - display all possible data (for use in terminal)\n")
+
+    print("-I<component> show an icon before text; 1 component per executor allowed\n")
 
 
 def icon_path(home, component):
