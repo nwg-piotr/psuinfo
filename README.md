@@ -4,14 +4,11 @@ A Python psutil-based command to display customizable system usage info in a sin
 Inspired by @tknomanzr 's [cpu.py](https://github.com/tknomanzr/scripts/blob/master/tint2/executors/cpu.py).
 
 ___
-New in 0.0.4-1 version:
+New in 0.0.5-1 version:
 
 ```text
--I<component> argument to display an icon before value. Only 1 component per executor allowed. 
+-W<number> - selects 0 to n-th element from multiple output (drives, mountpoints); use together with -I<component>
 ```
-Bug fixes in 0.0.4-2:
-```
-Missing ℉ sign restored. Missing help line added.
 ```
 ___
 
@@ -41,7 +38,7 @@ Copy the `/usr/share/psuinfo` folder to `~/.local/share`, edit .svg files inside
 
 ## Command:
 ```
-psuinfo [-C{components}] [-F] [-N] [-S<number>] | [-S<string>[-T] [-all] [-h] [--help] [-I<component>]
+psuinfo [-C{components}] [-F] [-N] [-S<number>] | [-S<string>[-T] [-all] [-h] [--help] [-I{component}] [-W{number}]
 ```
 
 ## Arguments:
@@ -80,7 +77,7 @@ psuinfo [-C{components}] [-F] [-N] [-S<number>] | [-S<string>[-T] [-all] [-h] [-
 -all - display all possible data (for use in terminal)
 
 -I<component> - display an icon and text value; DO NOT USE with (g) component
-
+-W<number> - select 0 to n-th element from multiple output (drives, mountpoints)
 ```
 
 ## Sample usage:
