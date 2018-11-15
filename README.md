@@ -29,7 +29,7 @@ You may customize display, using arguments described below:
 
 [![customized display](http://nwg.pl/wiki-tint2-executors/psuinfo-customized.png)](http://nwg.pl/wiki-tint2-executors/psuinfo-customized.png)
 
-You may also prepend values with appropriate icons instead (/together with) names. Only 1 value per executor allowed. To do so, use `psuinfo -I<component>` format. See components description below.
+You may also **prepend values with appropriate icons** instead (/together with) names. Only 1 value per executor allowed. To do so, use `psuinfo -I<component>` format. See components description below.
 
 [![executors with icons](http://nwg.pl/wiki-tint2-executors/psuinfo-icons.png)](http://nwg.pl/wiki-tint2-executors/psuinfo-icons.png)
 
@@ -41,7 +41,7 @@ Copy the `/usr/share/psuinfo` folder to `~/.local/share`, edit .svg files inside
 
 ## Command:
 ```
-psuinfo [-C{components}] [-F] [-N] [-S<number>] [-T] [-all] [-h] [--help]
+psuinfo [-C{components}] [-F] [-N] [-S<number>] | [-S<string>[-T] [-all] [-h] [--help] [-I<component>]
 ```
 
 ## Arguments:
