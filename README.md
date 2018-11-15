@@ -9,7 +9,6 @@ New in 0.0.5-1 version:
 ```text
 -W<number> - selects 0 to n-th element from multiple output (drives, mountpoints); use together with -I<component>
 ```
-```
 ___
 
 Called with no argument, the script will display following data (if appropriate sensors available):
