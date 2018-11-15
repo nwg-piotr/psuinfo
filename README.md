@@ -27,7 +27,13 @@ Called with no argument, the script will display following data (if appropriate 
 
 You may customize display, using arguments described below:
 
-[![cpu-fan-mem](http://nwg.pl/wiki-tint2-executors/psuinfo-customized.png)](http://nwg.pl/wiki-tint2-executors/psuinfo-customized.png)
+[![customized display](http://nwg.pl/wiki-tint2-executors/psuinfo-customized.png)](http://nwg.pl/wiki-tint2-executors/psuinfo-customized.png)
+
+You may also prepend values with appropriate icons instead (/together with) names. Only 1 value per executor allowed. To do so, use `psuinfo -I<component>` format. See components description below.
+
+[![executors with icons](http://nwg.pl/wiki-tint2-executors/psuinfo-icons.png)](http://nwg.pl/wiki-tint2-executors/psuinfo-icons.png)
+
+The line above consists of 7 executors, using commands: `psuinfo -Cg`, `psuinfo -Ia`, `psuinfo -It`, `psuinfo -If`, `psuinfo -IM`, `psuinfo -In` and `psuinfo -Iu`.
 
 ## Command:
 ```
@@ -39,7 +45,7 @@ psuinfo [-C{components}] [-F] [-N] [-S<number>] [-T] [-all] [-h] [--help]
 ```
 -C defines Components. If none given, -CgStfM will be used by default
 
-  g - (g)raphical CPU load bar
+  g - (g)raphical CPU load bar (disallowed in -I<component> argument)
   p - (p)ercentage for each core (text)
   a - (a)verage CPU load (text)
   q - fre(q)ency for each thread
@@ -69,7 +75,7 @@ psuinfo [-C{components}] [-F] [-N] [-S<number>] [-T] [-all] [-h] [--help]
 -T - test execution time
 -all - display all possible data (for use in terminal)
 
--I<component> - allows to show an icon before text. 
+-I<component> - allows to show an icon before text (except for the (g) component!)
 Only 1 component per executor. E.g. psuinfo -Ia displays CPU icon and average CPU load value.
 
 ```
