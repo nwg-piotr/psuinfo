@@ -35,6 +35,10 @@ You may also prepend values with appropriate icons instead (/together with) name
 
 The line above consists of 7 executors, using commands: `psuinfo -Cg`, `psuinfo -Ia`, `psuinfo -It`, `psuinfo -If`, `psuinfo -IM`, `psuinfo -In` and `psuinfo -Iu`.
 
+**Customizing icons:**
+
+Copy the `/usr/share/psuinfo` folder to `~/.local/share`, edit .svg files inside.
+
 ## Command:
 ```
 psuinfo [-C{components}] [-F] [-N] [-S<number>] [-T] [-all] [-h] [--help]
