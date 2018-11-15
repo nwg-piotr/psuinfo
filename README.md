@@ -31,9 +31,9 @@ You may customize display, using arguments described below:
 
 You may also **prepend values with appropriate icons** instead (/together with) names. Only 1 value per executor allowed. To do so, use `psuinfo -I<component>` format. See components description below.
 
-[![executors with icons](http://nwg.pl/wiki-tint2-executors/psuinfo-icons.png)](http://nwg.pl/wiki-tint2-executors/psuinfo-icons.png)
+[![executors with icons](http://nwg.pl/wiki-tint2-executors/psuinfo-icons.png)](http://nwg.pl/wiki-tint2-executors/psuinfo-icons-0051.png)
 
-The line above consists of 7 executors, using commands: `psuinfo -Cg`, `psuinfo -Ia`, `psuinfo -It`, `psuinfo -If`, `psuinfo -IM`, `psuinfo -In` and `psuinfo -Iu`.
+The line above consists of 8 executors, using commands: `psuinfo -Cg`, `psuinfo -Ia`, `psuinfo -It`, `psuinfo -If`, `psuinfo -IM`, `psuinfo -In -W0`, `psuinfo -In -W1` and `psuinfo -Iu`.
 
 **Customizing icons:**
 
