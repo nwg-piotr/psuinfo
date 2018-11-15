@@ -351,7 +351,7 @@ def graph_per_cpu(result):
 
 
 def print_help():
-    print("\nArguments: [-C{components}] [-F] [-N] [-S<number>] [-T] [-all] [-h] [--help]")
+    print("\nArguments: [-C{components}] [-F] [-N] [-S<number>] [-T] [-all] [-h] [--help] [-I{component}] [-W{number}]")
 
     print("\n-C defines Components. If none given, -CgStfM will be used by default\n")
     print("  g - (g)raphical CPU load bar")
@@ -384,7 +384,8 @@ def print_help():
     print("-T - test execution time")
     print("-all - display all possible data (for use in terminal)\n")
 
-    print("-I<component> show an icon before text; 1 component per executor allowed\n")
+    print("-I<component> - show an icon before text; 1 component per executor allowed")
+    print("-W<number> - select 0-nth element from multiple output (drives, mountpoints)\n")
 
 
 def icon_path(home, component):
