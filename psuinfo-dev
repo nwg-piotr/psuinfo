@@ -385,7 +385,7 @@ def print_help():
     print("-all - display all possible data (for use in terminal)\n")
 
     print("-I<component> - show an icon before text; 1 component per executor allowed")
-    print("-W<number> - select 0-nth element from multiple output (drives, mountpoints)\n")
+    print("-W<number> - select 0 to n-th element from multiple output (drives, mountpoints)\n")
 
 
 def icon_path(home, component):
