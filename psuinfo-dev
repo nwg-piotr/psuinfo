@@ -28,8 +28,8 @@ def main():
     separator = "  "
     home = os.getenv("HOME")
 
-    pcpu, avg, speed, freqs, temp, fans, b_time, \
-    memory, swap, disks_usage, which = None, None, None, None, None, None, None, None, None, None, None
+    pcpu, avg, speed, freqs, temp, fans, b_time, memory, swap, disks_usage, which, ul, dl \
+        = None, None, None, None, None, None, None, None, None, None, None, None, None
 
     for i in range(1, len(sys.argv)):
         if sys.argv[i] == "-h" or sys.argv[i] == "--help":
@@ -128,6 +128,16 @@ def main():
     if "w" or "W" or "x" in components:
         try:
             swap = psutil.swap_memory()
+        except:
+            pass
+
+    if "f" in components:
+        try:
+            xfer_start = psutil.net_io_counters()
+            time.sleep(1)
+            xfer_finish = psutil.net_io_counters()
+            ul = (xfer_finish[0] - xfer_start[0]) / 1024
+            dl = (xfer_finish[1] - xfer_start[1]) / 1024
         except:
             pass
 
@@ -419,11 +429,10 @@ def icon_path(home, component):
     icon_custom = home + '/.local/share/psuinfo/' + f_name
     icon_default = "/usr/share/psuinfo/" + f_name
     if os.path.isfile(icon_custom):
-        return  icon_custom
+        return icon_custom
     else:
         return icon_default
 
 
 if __name__ == "__main__":
     main()
-
