@@ -64,7 +64,7 @@ def main():
                 pass
 
         if sys.argv[i].upper() == "-ALL":
-            components = "gpaQStfMcWDU"
+            components = "gpaQStfMcWDUr"
             names = True
             testing = True
 
