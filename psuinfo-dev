@@ -28,8 +28,8 @@ def main():
     separator = "  "
     home = os.getenv("HOME")
 
-    pcpu, avg, speed, freqs, temp, fans, b_time, memory, swap, disks_usage, which, ul, dl \
-        = None, None, None, None, None, None, None, None, None, None, None, None, None
+    pcpu, avg, speed, freqs, temp, fans, b_time, memory, swap, disks_usage, which, ul, dl, xfer_start, xfer_finish \
+        = None, None, None, None, None, None, None, None, None, None, None, None, None, None, None
 
     for i in range(1, len(sys.argv)):
         if sys.argv[i] == "-h" or sys.argv[i] == "--help":
@@ -317,6 +317,12 @@ def main():
                     output += entry[0] + ":"
                     output += str(round(entry[1] / 1073741824, 1)) + "/"
                     output += str(round(entry[2] / 1073741824, 1)) + "GB" + separator
+
+        if char == "r":
+            if names and xfer_start is not None and xfer_finish is not None:
+                output += "DL|UL:"
+            output += '{:0.2f}'.format((xfer_finish[0] - xfer_start[0]) / 1024) + '|{:0.2f}kB/s'.format(
+                (xfer_finish[1] - xfer_start[1]) / 1024) + separator
 
     if testing:
         output += "[" + str(int((round(time.time() * 1000)) - time_start) / 1000) + "s]" + separator
