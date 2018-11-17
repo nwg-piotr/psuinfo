@@ -131,7 +131,7 @@ def main():
         except:
             pass
 
-    if "f" in components:
+    if "r" in components:
         try:
             xfer_start = psutil.net_io_counters()
             time.sleep(1)
