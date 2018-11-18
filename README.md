@@ -38,15 +38,15 @@ Copy the `/usr/share/psuinfo` folder to `~/.local/share`, edit .svg files inside
 
 ## Command:
 ```
-psuinfo [-C{components}] [-F] [-N] [-S<number>] | [-S<string>[-T] [-all] [-h] [--help] [-I{component}] [-W{number}]
+psuinfo [-C{components}] | [-I{component}] [-F] [-N] [-S<number>] | [-S<string>] [-T] [-W{number}] [-all] [-h] [--help]
 ```
 
 ## Arguments:
 
 ```
--C defines Components. If none given, -CgStfM will be used by default
+-C defines multiple components. -I defines a single component. If none given, -CgStfM argument will be used by default.
 
-  g - (g)raphical CPU load bar (disallowed in -I<component> argument)
+  g - (g)raphical CPU load bar
   p - (p)ercentage for each core (text)
   a - (a)verage CPU load (text)
   q - fre(q)ency for each thread
@@ -68,15 +68,16 @@ psuinfo [-C{components}] [-F] [-N] [-S<number>] | [-S<string>[-T] [-all] [-h] [-
   N - drives as mou(N)tpoints used/total
   u - (u)ptime HH:MM
   U - (U)ptime HH:MM:SS
+  k - current networ(k) traffic as upload/download in kB/s
 
 -F - use Fahrenheit instead of ℃
 -N - display field names (except for (g)raphical CPU load bar)
--S<number> - number of spaces between components (-S2 by default)
--S<string> - a custom separator (use ' | ' to include spaces)
+-S<number> - number of spaces between components (-S2 if none given)
+-S<string> for custom separator (use ' | ' to include spaces)
 -T - test execution time
 -all - display all possible data (for use in terminal)
 
--I<component> - display an icon and text value; DO NOT USE with (g) component
+-I<component> - show an icon before text; 1 component per executor allowed
 -W<number> - select 0 to n-th element from multiple output (drives, mountpoints)
 ```
 
