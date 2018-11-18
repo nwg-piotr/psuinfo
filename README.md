@@ -4,11 +4,10 @@ A Python psutil-based command to display customizable system usage info in a sin
 Inspired by @tknomanzr 's [cpu.py](https://github.com/tknomanzr/scripts/blob/master/tint2/executors/cpu.py).
 
 ___
-New in 0.0.5-1 version:
+New in 0.0.7-1 version:
 
 ```text
--W<number> - selects 0 to n-th element from multiple output (drives, mountpoints)
-(use together with -I<component>)
+k component for current networ(k) traffic as upload/download in kB/s
 ```
 ___
 
