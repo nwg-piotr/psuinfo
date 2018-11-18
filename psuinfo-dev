@@ -30,7 +30,8 @@ def main():
     draw_icons = False
 
     pcpu, avg, speed, freqs, temp, fans, b_time, memory, swap, disks_usage, which, ul, dl, xfer_start, xfer_finish, \
-        path_to_icon = None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None
+        path_to_icon, c_name = None, None, None, None, None, None, None, None, None, None, None, None, None, None, \
+        None, None, None
 
     for i in range(1, len(sys.argv)):
         if sys.argv[i] == "-h" or sys.argv[i] == "--help":
@@ -76,6 +77,12 @@ def main():
             # exception for UL/DL speed; to assign an icon to it we need to calculate speeds first
             if components != "k":
                 path_to_icon = icon_path(home, components)
+
+        if sys.argv[i].startswith("-M"):
+            # We can only have a custom name for a single component
+            components = components[0]
+            names = True
+            c_name = sys.argv[i][2::]
 
     if testing:
         time_start = int(round(time.time() * 1000))
@@ -198,71 +205,73 @@ def main():
 
     for char in components:
         if char == "g" and pcpu is not None:
+            if c_name:
+                output += c_name
             output += graph_per_cpu(pcpu) + separator
 
         if char == "p" and pcpu is not None:
             if names:
-                output += "CPU: "
+                output += c_name if c_name else "CPU: "
             output += per_cpu(pcpu) + separator
 
         if char == "a" and avg is not None:
             if names:
-                output += "avCPU: "
+                output += c_name if c_name else "avCPU: "
             output += avg + "%" + separator
 
         if char == "q" and freqs is not None:
             if names:
-                output += " CPU: "
+                output += c_name if c_name else "CPU: "
             output += freq_per_cpu(freqs)[0][:-1] + " GHz" + separator
 
         if char == "Q" and freqs is not None:
             if names:
-                output += "CPU: "
+                output += c_name if c_name else "CPU: "
             result = freq_per_cpu(freqs)
             output += result[0][:-1] + "/" + str(result[1]) + " GHz" + separator
 
         if char == "s" and speed is not None:
             if names:
-                output += "SPD: "
+                output += c_name if c_name else "SPD: "
             output += str(round(speed[0] / 1000, 1)) + " GHz" + separator
 
         if char == "S" and speed is not None:
             if names:
-                output += "avSPD: "
+                output += c_name if c_name else "avSPD: "
             output += str(round(speed[0] / 1000, 1)) + "/" + str(round(speed[2] / 1000, 1)) + " GHz" + separator
 
         if char == "t" and temp is not None and len(temp) > 0:
             if names:
-                output += "CORE: "
+                output += c_name if c_name else "CORE: "
             output += str(temp["coretemp"][0][1])
             output += "℉" if fahrenheit else "℃"
             output += separator
 
         if char == "f" and fans is not None and len(fans) > 0:
             if names:
-                output += "FAN: "
+                output += c_name if c_name else "FAN: "
             fan0 = next(iter(fans.values()))
             output += str(fan0[0][1]) + "/m" + separator
 
         if char == 'm' and memory is not None:
             if names:
-                output += "MEM: "
+                output += c_name if c_name else "MEM: "
             output += str(round((memory[0] - memory[1]) / 1073741824, 1)) + " GB" + separator
 
         if char == 'M' and memory is not None:
             if names:
-                output += "MEM: "
+                output += c_name if c_name else "MEM: "
             output += str(round((memory[3]) / 1073741824, 1)) + "/" + str(
                 round(memory[0] / 1073741824, 1)) + " GB" + separator
 
         if char == 'c' and memory is not None:
             if names:
-                output += "MEM: "
+                output += c_name if c_name else "MEM: "
             output += str(memory[2]) + "%" + separator
 
         if char == 'C' and memory is not None:
             if names:
-                output += "MEM: "
+                output += c_name if c_name else "MEM: "
             output += str(100 - memory[2]) + "%" + separator
 
         if char == 'u' and b_time is not None:
@@ -270,7 +279,7 @@ def main():
             m, s = divmod(up_time, 60)
             h, m = divmod(m, 60)
             if names:
-                output += "UP: "
+                output += c_name if c_name else "UP: "
             output += "%d:%02d" % (h, m) + separator
 
         if char == 'U' and b_time is not None:
@@ -278,23 +287,23 @@ def main():
             m, s = divmod(up_time, 60)
             h, m = divmod(m, 60)
             if names:
-                output += "UP: "
+                output += c_name if c_name else "UP: "
             output += "%d:%02d:%02d" % (h, m, s) + separator
 
         if char == "w" and swap is not None:
             if names:
-                output += "SWAP: "
+                output += c_name if c_name else "SWAP: "
             output += str(round(swap[1] / 1073741824, 1)) + " GB" + separator
 
         if char == "W" and swap is not None:
             if names:
-                output += "SWAP: "
+                output += c_name if c_name else "SWAP: "
             output += str(round(swap[1] / 1073741824, 1)) + "/"
             output += str(round(swap[0] / 1073741824, 1)) + " GB" + separator
 
         if char == "x" and swap is not None:
             if names:
-                output += "SWAP: "
+                output += c_name if c_name else "SWAP: "
             output += str(swap[3]) + "%" + separator
 
         if char == "d" or char == "n" and disks_usage is not None:
@@ -311,6 +320,8 @@ def main():
                     output += str(entry[3]) + "%" + separator
 
         if char == "D" or char == "N" and disks_usage is not None:
+            if c_name:
+                output += c_name
             if which is not None:
                 try:
                     entry = disks_usage[which]
@@ -327,7 +338,7 @@ def main():
 
         if char == "k":
             if names and xfer_start is not None and xfer_finish is not None:
-                output += "Net: "
+                output += c_name if c_name else "Net: "
             output += '{:0.2f}'.format((xfer_finish[0] - xfer_start[0]) / 1024) + '  {:0.2f} kB/s'.format(
                 (xfer_finish[1] - xfer_start[1]) / 1024) + separator
 
