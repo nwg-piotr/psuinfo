@@ -1,14 +1,14 @@
 # Maintainer: Piotr Miller <nwg.piotr@gmail.com>
 pkgname=('psuinfo')
 pkgver=0.0.7
-pkgrel=1
+pkgrel=3
 pkgdesc="A psutil-based command to display customizable system info, intended for Tint2 or other panels"
 arch=('x86_64')
 url="https://github.com/nwg-piotr/psuinfo"
 license=('GPL3')
 depends=('python' 'python-psutil')
 
-source=("https://github.com/nwg-piotr/psuinfo/raw/master/psuinfo"
+source=("https://github.com/nwg-piotr/psuinfo/raw/master/psuinfo-0.0.7-3"
 	"https://github.com/nwg-piotr/psuinfo/raw/master/icons/cpu.svg"
 	"https://github.com/nwg-piotr/psuinfo/raw/master/icons/fan.svg"
 	"https://github.com/nwg-piotr/psuinfo/raw/master/icons/hdd.svg"
@@ -21,7 +21,7 @@ source=("https://github.com/nwg-piotr/psuinfo/raw/master/psuinfo"
 	"https://github.com/nwg-piotr/psuinfo/raw/master/icons/xfer-d.svg"
 	"https://github.com/nwg-piotr/psuinfo/raw/master/icons/xfer-u.svg")
 
-md5sums=('bf40cfecdcea1d252454f2b60f98e32e'
+md5sums=('5e2e969978e581bcc5373fff24ea88f8'
          'SKIP'
          'SKIP'
          'SKIP'
@@ -35,7 +35,7 @@ md5sums=('bf40cfecdcea1d252454f2b60f98e32e'
          'SKIP')
 
 package() {
-  install -D -m 755 psuinfo \
+  install -D -m 755 psuinfo-0.0.7-3 \
  	 "$pkgdir"/usr/bin/psuinfo
   install -D -t "$pkgdir/usr/share/$pkgname" *.svg
 }
