@@ -4,10 +4,11 @@ A Python psutil-based command to display customizable system usage info in a sin
 Inspired by @tknomanzr 's [cpu.py](https://github.com/tknomanzr/scripts/blob/master/tint2/executors/cpu.py).
 
 ___
-New in 0.0.7-1 version:
+New in 0.0.7-2 version:
 
 ```text
-k component for current networ(k) traffic as upload/download in kB/s
+i component for current Wi-Fi name (depends on wireless-tools)
+-M<string> for custom component name ('My custom name: ')
 ```
 ___
 
@@ -37,7 +38,7 @@ Copy the `/usr/share/psuinfo` folder to `~/.local/share`, edit .svg files inside
 
 ## Command:
 ```
-psuinfo [-C{components}] | [-I{component}] [-F] [-N] [-S<number>] | [-S<string>] [-T] [-W{number}] [-all] [-h] [--help]
+psuinfo [-C{components}] | [-I{component}] [-F] [-N] [-S<number>] | [-S<string>] [-M<string>] [-T] [-W{number}] [-all] [-h] [--help]
 ```
 
 ## Arguments:
@@ -67,12 +68,14 @@ psuinfo [-C{components}] | [-I{component}] [-F] [-N] [-S<number>] | [-S<string>]
   N - drives as mou(N)tpoints used/total
   u - (u)ptime HH:MM
   U - (U)ptime HH:MM:SS
+  i - current WiF(i) name
   k - current networ(k) traffic as upload/download in kB/s
 
 -F - use Fahrenheit instead of ℃
 -N - display field names (except for (g)raphical CPU load bar)
 -S<number> - number of spaces between components (-S2 if none given)
 -S<string> for custom separator (use ' | ' to include spaces)
+-M<string> for custom component name ('My custom name: ')
 -T - test execution time
 -all - display all possible data (for use in terminal)
 
