@@ -17,6 +17,7 @@ import sys
 import psutil
 import time
 import os
+import subprocess
 
 
 def main():
@@ -30,8 +31,8 @@ def main():
     draw_icons = False
 
     pcpu, avg, speed, freqs, temp, fans, b_time, memory, swap, disks_usage, which, ul, dl, xfer_start, xfer_finish, \
-        path_to_icon, c_name = None, None, None, None, None, None, None, None, None, None, None, None, None, None, \
-        None, None, None
+        path_to_icon, c_name, wifi = None, None, None, None, None, None, None, None, None, None, None, None, None, \
+        None, None, None, None, None
 
     for i in range(1, len(sys.argv)):
         if sys.argv[i] == "-h" or sys.argv[i] == "--help":
@@ -200,6 +201,12 @@ def main():
         except:
             pass
 
+    if "i" in components:
+        try:
+            wifi = str(subprocess.check_output("iwgetid")).split('\"')[1]
+        except:
+            pass
+
     # Build output component after component
     output += separator
 
@@ -342,6 +349,11 @@ def main():
             output += '{:0.2f}'.format((xfer_finish[0] - xfer_start[0]) / 1024) + '  {:0.2f} kB/s'.format(
                 (xfer_finish[1] - xfer_start[1]) / 1024) + separator
 
+        if char == "i" and wifi is not None:
+            if names:
+                output += c_name if c_name else "Wi-Fi: "
+            output += wifi + separator
+
     if testing:
         output += "[" + str(int((round(time.time() * 1000)) - time_start) / 1000) + "s]" + separator
 
@@ -437,6 +449,7 @@ def icon_path(home, component):
              'S': 'cpu.svg',
              't': 'temp.svg',
              'f': 'fan.svg',
+             'i': 'net.svg',
              'm': 'mem.svg',
              'M': 'mem.svg',
              'c': 'mem.svg',
