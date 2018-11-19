@@ -426,12 +426,14 @@ def print_help():
     print("  N - drives as mou(N)tpoints used/total")
     print("  u - (u)ptime HH:MM")
     print("  U - (U)ptime HH:MM:SS")
+    print("  i - current WiF(i) network name")
     print("  k - current networ(k) traffic as upload/download in kB/s")
 
     print("\n-F - use Fahrenheit instead of ℃")
     print("-N - display field names (except for (g)raphical CPU load bar)")
     print("-S<number> - number of spaces between components (-S2 if none given)")
     print("-S<string> for custom separator (use \' | \' to include spaces)")
+    print("-M<string> for custom component name (\'My custom name: \')")
     print("-T - test execution time")
     print("-all - display all possible data (for use in terminal)\n")
 
