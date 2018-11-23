@@ -6,7 +6,7 @@ Inspired by @tknomanzr 's [cpu.py](https://github.com/tknomanzr/scripts/blob/mas
 ___
 New in 1.0-1 version:
 
-- Trailing ".0" (which was always 0) removed from the temperature display;
+- Trailing ".0" (which was always 0) removed from the temperature display ([feature request](https://github.com/nwg-piotr/psuinfo/issues/1));
 - 3 sample config files (psuinfo-bottom*.tint2rc) added.
 ___
 
