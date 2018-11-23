@@ -4,9 +4,10 @@ A Python psutil-based command to display customizable system usage info in a sin
 Inspired by @tknomanzr 's [cpu.py](https://github.com/tknomanzr/scripts/blob/master/tint2/executors/cpu.py).
 
 ___
-New in 0.0.7-3 version:
+New in 1.0-1 version:
 
-(i) component removed as non-psutil based. Please use [wifi-name.sh](https://github.com/nwg-piotr/tint2-executors/blob/master/wifi-name.sh) instead.
+- Trailing ".0" (which was always 0) removed from the temperature display;
+- 3 sample config files (psuinfo-bottom*.tint2rc) added.
 ___
 
 Called with no argument, the script will display following data (if appropriate sensors available):
