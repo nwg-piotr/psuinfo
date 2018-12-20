@@ -176,15 +176,11 @@ execp_icon_h = 0
 
 ### Arch Linux
 
-Install the [psuinfo](https://aur.archlinux.org/packages/psuinfo) AUR package.
+[psuinfo](https://aur.archlinux.org/packages/psuinfo) AUR package.
 
-### Other distributions
+### Void Linux
 
-Just place the [psuinfo](https://github.com/nwg-piotr/psuinfo/blob/master/psuinfo) file in your /usr/bin folder. You may need to replace the line:
-```
-#!/usr/bin/python
-```
-with what reflects location of your Python3 interpreter.
+The `psuinfo` package v1-0_1 in official repository.
 
 **Dependencies:** `python` (`python3`), `python-psutil` (`python3-psutil`)
 
