@@ -1,4 +1,6 @@
 # psuinfo
+[![Packaging status](https://repology.org/badge/vertical-allrepos/psuinfo.svg)](https://repology.org/metapackage/psuinfo/versions)
+
 A Python psutil-based command to display customizable system usage info as icons or text. Intended for [Tint2 panel](https://gitlab.com/o9000/tint2) executors, may also be used in other panels or executed in terminal. This project derives from my [collection of Tint2 executors](https://github.com/nwg-piotr/tint2-executors) and replaces the [cpu-fan-mem.py](https://github.com/nwg-piotr/tint2-executors/blob/master/cpu-fan-mem.py) script.
 
 Inspired by @tknomanzr 's [cpu.py](https://github.com/tknomanzr/scripts/blob/master/tint2/executors/cpu.py).
