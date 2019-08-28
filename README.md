@@ -1,5 +1,7 @@
 # psuinfo
-A Python psutil-based command to display customizable system usage info in a single line. Intended for [Tint2 panel](https://gitlab.com/o9000/tint2) executors, may also be used in other panels or executed in terminal. This project derives from my [collection of Tint2 executors](https://github.com/nwg-piotr/tint2-executors) and replaces the [cpu-fan-mem.py](https://github.com/nwg-piotr/tint2-executors/blob/master/cpu-fan-mem.py) script.
+[![Packaging status](https://repology.org/badge/vertical-allrepos/psuinfo.svg)](https://repology.org/metapackage/psuinfo/versions)
+
+A Python psutil-based command to display customizable system usage info as icons or text. Intended for [Tint2 panel](https://gitlab.com/o9000/tint2) executors, may also be used in other panels or executed in terminal. This project derives from my [collection of Tint2 executors](https://github.com/nwg-piotr/tint2-executors) and replaces the [cpu-fan-mem.py](https://github.com/nwg-piotr/tint2-executors/blob/master/cpu-fan-mem.py) script.
 
 Inspired by @tknomanzr 's [cpu.py](https://github.com/tknomanzr/scripts/blob/master/tint2/executors/cpu.py).
 
@@ -176,15 +178,11 @@ execp_icon_h = 0
 
 ### Arch Linux
 
-Install the [psuinfo](https://aur.archlinux.org/packages/psuinfo) AUR package.
+[psuinfo](https://aur.archlinux.org/packages/psuinfo) AUR package.
 
-### Other distributions
+### Void Linux
 
-Just place the [psuinfo](https://github.com/nwg-piotr/psuinfo/blob/master/psuinfo) file in your /usr/bin folder. You may need to replace the line:
-```
-#!/usr/bin/python
-```
-with what reflects location of your Python3 interpreter.
+The `psuinfo` package v1-0_1 in official repository.
 
 **Dependencies:** `python` (`python3`), `python-psutil` (`python3-psutil`)
 
