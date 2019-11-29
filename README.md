@@ -195,7 +195,7 @@ Since about 2 releases back the `psutil.sensors_temperatures()` command returns 
 > RuntimeWarning: ignoring FileNotFoundError(2, 'No such file or directory') for file '/sys/class/hwmon/hwmon0/temp2_input'
 
 The issue was discussed on the project site, but no action has been taken. It does not stop psuinfo from 
-working well with panels, but look ugly in terminal output. I tried to supress warnings, by moving the
+working well with panels, but looks ugly in terminal output. I tried to supress warnings, by moving the
 script to `/usr/share/psuinfo/psuinfo.py` and adding a shell launcher script:
 
 ```bash
