@@ -187,3 +187,22 @@ The `psuinfo` package v1-0_1 in official repository.
 **Dependencies:** `python` (`python3`), `python-psutil` (`python3-psutil`)
 
 The script was not tested with Python versions below 3.5.
+
+## Warning messages in terminal
+
+Since about 2 releases back the `psutil.sensors_temperatures()` command returns a stderr warning:
+
+> RuntimeWarning: ignoring FileNotFoundError(2, 'No such file or directory') for file '/sys/class/hwmon/hwmon0/temp2_input'
+
+The issue was discussed on the project site, but no action has been taken. It does not stop psuinfo from 
+working well with panels, but look ugly in terminal output. I tried to supress warnings, by moving the
+script to `/usr/share/psuinfo/psuinfo.py` and adding a shell launcher script:
+
+```bash
+#!/usr/bin/env bash
+
+exec /usr/share/psuinfo/psuinfo.py "$@" 2>/dev/null
+```
+
+For some reason the script executed this way consumes three times as much CPU power, so I gave up. However, 
+you can consider thit for use in terminal.
