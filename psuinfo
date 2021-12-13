@@ -245,13 +245,12 @@ def main():
                 output += c_name if c_name else "CORE: "
             if "k10temp" in temp.keys():
                 # ryzen, multiple Die temperatures for threadripper/Epyc
-                ryzen_die_temps = [sensor.current for sensor in temp["k10temp"] if sensor.label == 'Tdie'
-                                   or sensor.label == 'Tctl']
-                try:
-                    output += str(int(max(ryzen_die_temps)))
-                except ValueError as e:
-                    print(e)
-
+                ryzen_die_temps = [sensor.current for sensor in temp["k10temp"] if sensor.label == 'Tdie']
+                output += str(int(max(ryzen_die_temps)))
+            if "zenpower" in temp.keys():
+                # zen3 is not supported in k10.  Fix is to load zenpower and unload k10
+                ryzen_die_temps = [sensor.current for sensor in temp["zenpower"] if sensor.label == 'Tdie']
+                output += str(int(max(ryzen_die_temps)))
             if "coretemp" in temp.keys():
                 # intel
                 output += str(int(temp["coretemp"][0][1]))
